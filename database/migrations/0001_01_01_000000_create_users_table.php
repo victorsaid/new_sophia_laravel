@@ -16,16 +16,15 @@ return new class extends Migration
             $table->string('name');
             $table->string('document');
             $table->string('email')->unique();
-            $table->string('date_birthday');
+            $table->date('date_birthday');
             $table->string('gender')->nullable();
-            $table->json('photo')->nullable();
+            $table->string('photo')->nullable();
+            $table->string('enrollment')->nullable()->unique()->index();
+            $table->string('education_level')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
 
-            $table->string('city')->nullable();
-            $table->string('state')->nullable();
-            $table->string('country')->nullable();
-            $table->string('zip_code')->nullable();
+            $table->foreignId('address_id')->nullable()->constrained()->nullOnDelete();
 
             $table->string('phone')->nullable();
             $table->string('phone_whatsapp')->nullable();
